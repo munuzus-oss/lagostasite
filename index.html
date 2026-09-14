@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lagosta</title>
+<style>
+  :root{
+    --bg: #204b34;
+    --ink: #bfe4ff;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html, body{
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: Georgia, "Times New Roman", serif;
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+
+  body{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+  }
+
+  .page{
+    width: 100%;
+    max-width: 460px;
+    padding: 56px 28px 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ---------- Logo ---------- */
+
+  .logo{
+    display: flex;
+    align-items: center;
+    height: 90px;
+    margin: 0 auto 88px;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .logo-letter{
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    border-radius: 50%;
+    border: 1.4px solid var(--ink);
+    background: var(--bg);
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    line-height: 1;
+    transform: translateY(0);
+    animation-name: bob;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    margin: 0 -5px;
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+    position: relative;
+    z-index: 1;
+  }
+
+  @media (min-width: 400px){
+    .logo-letter{ width: 48px; height: 48px; min-width: 48px; font-size: 18px; margin: 0 -6px; }
+  }
+
+  .logo-press{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    font-size: 14px;
+    font-style: italic;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    white-space: nowrap;
+    transition: color 0.4s ease;
+    pointer-events: none;
+  }
+
+  @media (min-width: 400px){
+    .logo-press{ font-size: 15px; }
+  }
+
+  @keyframes bob{
+    0%   { transform: translateY(0); }
+    12%  { transform: translateY(-26px); }
+    24%  { transform: translateY(0); }
+    62%  { transform: translateY(0); }
+    76%  { transform: translateY(13px); }
+    88%  { transform: translateY(0); }
+    100% { transform: translateY(0); }
+  }
+
+  /* ---------- Sections ---------- */
+
+  .sections{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .section{
+    text-align: center;
+  }
+
+  .section h2{
+    font-size: 15px;
+    font-weight: normal;
+    font-style: italic;
+    margin: 0 0 12px;
+    letter-spacing: 0.02em;
+  }
+
+  .section p{
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  .section p + p{
+    margin-top: 6px;
+  }
+
+  a.project-link,
+  a.mail-link{
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--ink);
+    font-size: 17px;
+    padding-bottom: 1px;
+    transition: color 0.4s ease, border-color 0.4s ease;
+  }
+
+  /* ---------- Newsletter form ---------- */
+
+  .newsletter-form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 4px auto 0;
+  }
+
+  .newsletter-form input[type="email"]{
+    width: 100%;
+    font-family: inherit;
+    font-size: 15px;
+    padding: 10px 16px;
+    border: 1.4px solid var(--ink);
+    background: var(--bg);
+    color: var(--ink);
+    border-radius: 24px;
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+  }
+
+  .newsletter-form input[type="email"]::placeholder{
+    color: var(--ink);
+    opacity: 0.7;
+    font-style: italic;
+  }
+
+  .newsletter-form input[type="email"]:focus{
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
+  }
+
+  .newsletter-form button{
+    font-family: inherit;
+    font-size: 16px;
+    padding: 10px 12px;
+    border: 1.4px solid var(--ink);
+    border-radius: 24px;
+    background: var(--ink);
+    color: var(--bg);
+    cursor: pointer;
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+  }
+
+  .newsletter-form button:hover{
+    background: transparent;
+    color: var(--ink);
+  }
+
+  .newsletter-form button:disabled{
+    opacity: 0.6;
+    cursor: default;
+  }
+
+  .newsletter-form button:disabled:hover{
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  .newsletter-note{
+    font-size: 13px;
+    margin-top: 8px;
+    min-height: 16px;
+    font-style: italic;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .logo-letter{ animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="logo" id="logo" role="button" tabindex="0" aria-label="Lagosta — clique para mudar as cores"></div>
+
+  <div class="sections">
+
+    <div class="section">
+      <h2>Projects</h2>
+      <p><a class="project-link" href="https://www.lobsterislobster.online" target="_blank" rel="noopener">Lobster is Lobster</a></p>
+    </div>
+
+    <div class="section">
+      <h2>Contact</h2>
+      <p><a class="mail-link" href="mailto:hello@lagosta.press">hello@lagosta.press</a></p>
+      <p><a class="mail-link" href="https://www.instagram.com/lagosta.press" target="_blank" rel="noopener">@lagosta.press</a></p>
+    </div>
+
+    <div class="section">
+      <h2>Newsletter</h2>
+      <form class="newsletter-form" id="newsletter-form">
+        <input type="email" id="newsletter-email" placeholder="leave your email, we'll be in touch" required>
+        <button type="submit">Submit</button>
+      </form>
+      <p class="newsletter-note" id="newsletter-note"></p>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  // LAGOSTA logo — arranged in a row, each letter bobbing on its own timing
+  const word = ['L', 'A', 'G', 'O', 'S', 'T', 'A'];
+  const logo = document.getElementById('logo');
+  const letterEls = [];
+
+  word.forEach((char) => {
+    const el = document.createElement('div');
+    el.className = 'logo-letter';
+    el.textContent = char;
+
+    const duration = 4.5 + Math.random() * 3; // 4.5s - 7.5s
+    const delay = Math.random() * 6;           // 0s - 6s
+    el.style.animationDuration = duration + 's';
+    el.style.animationDelay = '-' + delay + 's';
+
+    logo.appendChild(el);
+    letterEls.push(el);
+  });
+
+  // Hidden word "PRESS" sits behind the AGOST circles (indices 1-5) and only
+  // peeks out for an instant while a circle bounces away from its resting spot.
+  const pressWord = ['P', 'R', 'E', 'S', 'S'];
+  const pressIndices = [1, 2, 3, 4, 5]; // A, G, O, S, T
+  const pressEls = pressWord.map((char) => {
+    const span = document.createElement('span');
+    span.className = 'logo-press';
+    span.textContent = char;
+    span.setAttribute('aria-hidden', 'true');
+    logo.appendChild(span);
+    return span;
+  });
+
+  function positionPressLetters(){
+    const logoRect = logo.getBoundingClientRect();
+    pressIndices.forEach((letterIndex, i) => {
+      const rect = letterEls[letterIndex].getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2 - logoRect.left;
+      pressEls[i].style.left = centerX + 'px';
+    });
+  }
+
+  positionPressLetters();
+
+  // Make the email field + submit button match the logo's width exactly
+  const newsletterForm = document.getElementById('newsletter-form');
+
+  function matchFormWidthToLogo(){
+    newsletterForm.style.width = logo.getBoundingClientRect().width + 'px';
+  }
+
+  function handleResize(){
+    matchFormWidthToLogo();
+    positionPressLetters();
+  }
+
+  matchFormWidthToLogo();
+  window.addEventListener('resize', handleResize);
+
+  // Clicking (or pressing Enter/Space on) the logo toggles between the two palettes
+  const palettes = [
+    { bg: '#204b34', ink: '#bfe4ff' }, // green / light blue (default)
+    { bg: '#bfe4ff', ink: '#204b34' }, // light blue / green (negative)
+  ];
+  let paletteIndex = 0;
+
+  function applyPalette(i){
+    document.documentElement.style.setProperty('--bg', palettes[i].bg);
+    document.documentElement.style.setProperty('--ink', palettes[i].ink);
+  }
+
+  function cyclePalette(){
+    paletteIndex = (paletteIndex + 1) % palettes.length;
+    applyPalette(paletteIndex);
+  }
+
+  logo.addEventListener('click', cyclePalette);
+  logo.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      cyclePalette();
+    }
+  });
+
+  // Newsletter form — submits to Kit (kit.com, formerly ConvertKit)
+  const KIT_FORM_ID = '9911637';
+  const KIT_ENDPOINT = `https://app.kit.com/forms/${KIT_FORM_ID}/subscriptions`;
+
+  const form = document.getElementById('newsletter-form');
+  const note = document.getElementById('newsletter-note');
+  const emailInput = document.getElementById('newsletter-email');
+  const submitButton = form.querySelector('button[type="submit"]');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = emailInput.value.trim();
+    if (!email) return;
+
+    const originalLabel = submitButton.textContent;
+    submitButton.disabled = true;
+    submitButton.textContent = '...';
+    note.textContent = '';
+
+    try {
+      const response = await fetch(KIT_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Accept': 'application/json',
+        },
+        body: new URLSearchParams({ email_address: email }),
+      });
+
+      if (response.ok) {
+        note.textContent = "Thanks — you're in.";
+        form.reset();
+      } else {
+        note.textContent = 'Something went wrong. Try again in a moment.';
+      }
+    } catch (err) {
+      note.textContent = 'Something went wrong. Try again in a moment.';
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = originalLabel;
+    }
+  });
+</script>
+
+</body>
+</html>
